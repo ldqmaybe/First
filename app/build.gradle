@@ -93,8 +93,6 @@ android {
 }
 
 dependencies {
-    compile project(':baseresllib')
-    compile project(':baseutillib')
     compile project(path: ':baselib')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/jpush-android-2.2.0.jar')
