@@ -7,7 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/baselib/baselib.iml" filepath="$PROJECT_DIR$/baselib/baselib.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseresllib/baseresllib.iml" filepath="$PROJECT_DIR$/baseresllib/baseresllib.iml" />
       <module fileurl="file://$PROJECT_DIR$/baseutillib/baseutillib.iml" filepath="$PROJECT_DIR$/baseutillib/baseutillib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/testapp/testapp.iml" filepath="$PROJECT_DIR$/testapp/testapp.iml" />
     </modules>
   </component>
 </project>
