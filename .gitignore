@@ -48,7 +48,6 @@ Thumbs.db
 .gradle
 build/
 
-
 # Signing files
 .signing/
 
