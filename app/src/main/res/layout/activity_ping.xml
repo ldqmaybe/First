@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="IP地址"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_ip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="www.baidu.com" />
+
+    <TextView
+        android:id="@+id/tv_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送数据包的数目（个）"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="4" />
+
+    <TextView
+        android:id="@+id/tv_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送数据包的大小(byte)"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:text="64" />
+
+    <TextView
+        android:id="@+id/tv_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送数据包的间隔时间(s)"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1" />
+
+    <Button
+        android:id="@+id/btn_ping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PING" />
+
+</LinearLayout>

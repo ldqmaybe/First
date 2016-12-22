@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/dlg_com_tvCancle"
+        style="@style/dialog_button"
+        android:text="取消"
+        android:textColor="@color/text_color" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/dlg_com_tvOk"
+        style="@style/dialog_button"
+        android:text="确定" />
+
+</LinearLayout>

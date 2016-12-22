@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //************* App's dependencies******************
+    compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    compile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    //***********butterknife注解***************
+    compile 'com.jakewharton:butterknife:7.0.1'
+    //*********Retrofit、okhttp和rx系列*******
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+    compile 'io.reactivex:rxjava:1.2.3'
+    compile 'io.reactivex:rxandroid:1.2.1'
+}

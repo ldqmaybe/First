@@ -1,0 +1,117 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'com.antfortune.freeline'
+
+def releaseTime() {
+    return new Date().format("yyyy_MM_dd", TimeZone.getTimeZone("UTC"))
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.example.administrator.myapplication"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 222
+        versionName "2.2.2"
+
+    }
+    signingConfigs {
+        dev105 {
+            keyAlias '123456'
+            keyPassword '123456'
+            storeFile file('D:/AndroidStudioTool/StudioProject/MyApplication/my.jks')
+            storePassword '123456'
+        }
+        release {
+            keyAlias '123456'
+            keyPassword '123456'
+            storeFile file('D:/AndroidStudioTool/StudioProject/MyApplication/my.jks')
+            storePassword '123456'
+        }
+        dev251 {
+            keyAlias '123456'
+            keyPassword '123456'
+            storeFile file('D:/AndroidStudioTool/StudioProject/MyApplication/my.jks')
+            storePassword '123456'
+        }
+    }
+    buildTypes {
+        release {
+            // 这里是在 applicationId 中添加了一个后缀。所以『.』要加上
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "DemoRealse"
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField("String", "HOST_URL", "\"http://yuecaninfo.com\"")
+            //apk命名
+            android.applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        //这里修改apk文件名
+                        //yc_pos_2.1.8_release_2016_09_17
+                        def fileName = "yc_pos_${defaultConfig.versionName}_${variant.buildType.name}_${releaseTime()}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+        dev105 {
+            minifyEnabled false
+            resValue "string", "app_name", "Demo105"
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField("String", "HOST_URL", "\"http://192.168.0.105\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        dev251 {
+            minifyEnabled false
+            resValue "string", "app_name", "Demo251"
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField("String", "HOST_URL", "\"http://192.168.0.251\"")
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            resValue "string", "app_name", "DemDebug"
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField("String", "HOST_URL", "\"http://192.168.0.251\"")
+        }
+    }
+    productFlavors {
+    }
+    //设置虚拟机堆内存空间大小，避免在编译期间OOM
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+    //打包不检查
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile project(':baseresllib')
+    compile project(':baseutillib')
+    compile project(path: ':baselib')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/jpush-android-2.2.0.jar')
+    //    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    //    compile 'com.jakewharton:butterknife:8.4.0'
+    /************* App's dependencies******************/
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile 'com.android.support:recyclerview-v7:24.2.0'
+    compile 'com.android.support:design:24.2.0'
+    compile 'com.android.support:support-v4:24.2.0'
+    compile 'com.android.support:cardview-v7:24.2.0'
+    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    compile 'org.greenrobot:greendao:3.0.1'
+    // Required -- JUnit 4 framework，用于单元测试，google官方推荐
+    testCompile 'junit:junit:4.12'
+    // Optional -- Mockito framework，用于模拟架构，google官方推荐
+    //  http://www.manongjc.com/article/1546.html
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+}

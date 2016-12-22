@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<Button
+    android:id="@+id/btn_click1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="顶部栏"/>
+    <Button
+        android:id="@+id/btn_click2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CoordinatorLayoutActivity"/>
+    <Button
+        android:id="@+id/btn_click3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TabLayoutActivity"/>
+    <Button
+        android:id="@+id/btn_click4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NavigationDrawerActivity"/>
+    <Button
+        android:id="@+id/btn_click5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CardViewActivity"/>
+    <Button
+        android:id="@+id/btn_click6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="仿稀土"/>
+    <Button
+        android:id="@+id/btn_click7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="通知"/>
+    <Button
+        android:id="@+id/btn_click8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="movie"/>
+    <Button
+        android:id="@+id/btn_click9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="mvp"/>
+</LinearLayout>
