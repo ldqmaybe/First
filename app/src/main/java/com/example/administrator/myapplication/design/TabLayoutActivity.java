@@ -1,23 +1,23 @@
 package com.example.administrator.myapplication.design;
 
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 
+import com.cn.baselib.base.BaseActivity;
+import com.cn.baselib.base.BasePresenter;
 import com.example.administrator.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
+import butterknife.Bind;
 
-public class TabLayoutActivity extends AppCompatActivity {
-//    @BindView(R.id.tab_FindFragment_title)
+public class TabLayoutActivity extends BaseActivity {
+    @Bind(R.id.tab_FindFragment_title)
     TabLayout tab_FindFragment_title;
-//    @BindView(R.id.vp_FindFragment_pager)
+    @Bind(R.id.vp_FindFragment_pager)
     ViewPager vp_FindFragment_pager;
     private FragmentPagerAdapter fAdapter;                               //定义adapter
 
@@ -25,15 +25,17 @@ public class TabLayoutActivity extends AppCompatActivity {
     private List<String> list_title;                                     //tab名称列表
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab_layout);
-        ButterKnife.bind(this);
-        initView();
+    public BasePresenter initPresenter() {
+        return null;
     }
 
-    private void initView() {
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_tab_layout;
+    }
 
+    @Override
+    protected void initView() {
         //初始化各fragment
         Find_hotToday hotToday0 = new Find_hotToday();
         Find_hotToday hotToday1 = new Find_hotToday();

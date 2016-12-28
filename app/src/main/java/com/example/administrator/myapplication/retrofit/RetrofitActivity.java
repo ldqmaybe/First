@@ -1,6 +1,5 @@
 package com.example.administrator.myapplication.retrofit;
 
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class RetrofitActivity extends BaseActivity<MoviePresenter> implements MovieContact.View {
@@ -54,13 +52,6 @@ public class RetrofitActivity extends BaseActivity<MoviePresenter> implements Mo
     @Override
     public void onFailure(String error) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     @OnClick(R.id.text)

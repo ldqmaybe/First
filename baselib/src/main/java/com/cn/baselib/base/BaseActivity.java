@@ -5,7 +5,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.cn.baselib.R;
 import com.cn.baselib.mvp.IView;
+import com.cn.baselib.statusbar.StatusBarUtil;
 import com.cn.baselib.utils.HideUtil;
 
 import butterknife.ButterKnife;
@@ -34,6 +36,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutId());
+        setStatusBar();
         ButterKnife.bind(this);
         HideUtil.init(this);
         mContext = this;
@@ -41,7 +44,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         this.initBindingView();
         this.initView();
     }
-
+    protected void setStatusBar() {
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.test));
+    }
     /**
      * presenter与view绑定
      */

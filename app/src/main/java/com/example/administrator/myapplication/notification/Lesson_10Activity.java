@@ -6,16 +6,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.cn.baselib.base.BaseActivity;
+import com.cn.baselib.base.BasePresenter;
 import com.example.administrator.myapplication.MainActivity;
 import com.example.administrator.myapplication.R;
 
-public class Lesson_10Activity extends AppCompatActivity{
+public class Lesson_10Activity extends BaseActivity{
     //BaseNotification
     private Button bt01;
 
@@ -44,15 +44,17 @@ public class Lesson_10Activity extends AppCompatActivity{
     private PendingIntent pd;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-   /*加载页面*/
-        setContentView(R.layout.activity_lesson_10);
-
-        init();
+    public BasePresenter initPresenter() {
+        return null;
     }
 
-    private void init() {
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_lesson_10;
+    }
+
+    @Override
+    protected void initView() {
         bt01 = (Button)findViewById(R.id.le10bt01);
         bt02 = (Button)findViewById(R.id.le10bt02);
         bt03 = (Button)findViewById(R.id.le10bt03);

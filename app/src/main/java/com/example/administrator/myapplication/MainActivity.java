@@ -20,6 +20,7 @@ import com.example.administrator.myapplication.design.XituActivity;
 import com.example.administrator.myapplication.mvp.login.LoginActivity;
 import com.example.administrator.myapplication.notification.Lesson_10Activity;
 import com.example.administrator.myapplication.retrofit.RetrofitActivity;
+import com.example.administrator.myapplication.rxjava.RxjavaActivity;
 import com.example.administrator.myapplication.utils.LogUtils;
 
 import butterknife.Bind;
@@ -46,6 +47,8 @@ public class MainActivity extends BaseActivity {
     Button btnClick8;
     @Bind(R.id.btn_click9)
     Button btnClick9;
+    @Bind(R.id.btn_click10)
+    Button btnClick10;
 
     @Override
     public BasePresenter initPresenter() {
@@ -82,12 +85,11 @@ public class MainActivity extends BaseActivity {
         RxBus.getDefault().unRegister(this);
     }
 
-    @OnClick({R.id.btn_click1, R.id.btn_click2, R.id.btn_click3, R.id.btn_click4, R.id.btn_click5, R.id.btn_click6, R.id.btn_click7, R.id.btn_click8, R.id.btn_click9})
+    @OnClick({R.id.btn_click1, R.id.btn_click2, R.id.btn_click3, R.id.btn_click4, R.id.btn_click5, R.id.btn_click6, R.id.btn_click7, R.id.btn_click8, R.id.btn_click9, R.id.btn_click10})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_click1:
                 startActivity(new Intent(this, TopActivity.class));
-                finish();
                 break;
             case R.id.btn_click2:
                 startActivity(new Intent(this, CoordinatorLayoutActivity.class));
@@ -112,6 +114,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_click9:
                 startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.btn_click10:
+                startActivity(new Intent(this, RxjavaActivity.class));
                 break;
         }
     }

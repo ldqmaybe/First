@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cn.baselib.base.BaseActivity;
+import com.cn.baselib.statusbar.StatusBarUtil;
 import com.cn.baselib.widget.CaptchaImageView;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.bean.TimeStampResp;
@@ -47,6 +48,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         return R.layout.activity_login;
     }
 
+    @Override
+    protected void setStatusBar() {
+        super.setStatusBar();
+        StatusBarUtil.setColor(this,getResources().getColor(R.color.test));
+    }
 
     @Override
     protected void initView() {

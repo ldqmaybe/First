@@ -1,24 +1,23 @@
 package com.example.administrator.myapplication.design;
 
-import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.cn.baselib.base.BaseActivity;
+import com.cn.baselib.base.BasePresenter;
 import com.example.administrator.myapplication.R;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
-public class XituActivity extends AppCompatActivity {
+public class XituActivity extends BaseActivity {
     @Bind(R.id.head_iv)
     ImageView headIv;
     @Bind(R.id.one)
@@ -43,10 +42,17 @@ public class XituActivity extends AppCompatActivity {
     CoordinatorLayout rootLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xitu);
-        ButterKnife.bind(this);
+    public BasePresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_xitu;
+    }
+
+    @Override
+    protected void initView() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {

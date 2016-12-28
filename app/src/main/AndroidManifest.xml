@@ -160,6 +160,7 @@
         <activity android:name=".notification.Lesson_10Activity" />
         <activity android:name=".move.MoveActivity" />
         <activity android:name=".mvp.login.LoginActivity" />
+        <activity android:name=".rxjava.RxjavaActivity"></activity>
     </application>
 
 </manifest>

@@ -1,14 +1,14 @@
 package com.example.administrator.myapplication.design;
 
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.cn.baselib.base.BaseActivity;
+import com.cn.baselib.base.BasePresenter;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.bean.CardInfo;
 
@@ -16,9 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
-public class CardViewActivity extends AppCompatActivity {
+public class CardViewActivity extends BaseActivity {
 
 
     @Bind(R.id.toolbar)
@@ -32,14 +31,17 @@ public class CardViewActivity extends AppCompatActivity {
     List<CardInfo> list = new ArrayList<CardInfo>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_view);
-        ButterKnife.bind(this);
-        initView();
+    public BasePresenter initPresenter() {
+        return null;
     }
 
-    private void initView() {
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_card_view;
+    }
+
+    @Override
+    protected void initView() {
         swipeRefreshWidget.setColorSchemeResources(R.color.colorAccent, R.color.add_bg_color, R.color.colorPrimary, R.color.colorPrimaryDark, R.color.add_selected_color);
         //创建默认的线性LayoutManager
         mLayoutManager = new LinearLayoutManager(this);
@@ -100,6 +102,7 @@ public class CardViewActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
     private List<CardInfo> getDatas() {
