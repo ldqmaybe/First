@@ -160,7 +160,11 @@
         <activity android:name=".notification.Lesson_10Activity" />
         <activity android:name=".move.MoveActivity" />
         <activity android:name=".mvp.login.LoginActivity" />
-        <activity android:name=".rxjava.RxjavaActivity"></activity>
+        <activity android:name=".rxjava.RxjavaActivity" />
+        <activity android:name=".LoadMoreAddRefresh.XRecyclerViewActivity" />
+        <activity android:name=".LoadMoreAddRefresh.LinearActivity" />
+        <activity android:name=".LoadMoreAddRefresh.FullDelDemoActivity" />
+        <activity android:name=".LoadMoreAddRefresh.RefreshActivity"></activity>
     </application>
 
 </manifest>

@@ -12,4 +12,8 @@
     <color name="add_selected_color">#51C332</color>
     <color name="text_color">#555555</color>
     <color name="test">#ff9900</color>
+
+    <color name="red_ff4a57">#ff4a57</color>
+
+    <color name="cube_mints_f1f1f1">#f1f1f1</color>
 </resources>

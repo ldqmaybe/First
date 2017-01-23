@@ -45,7 +45,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         this.initView();
     }
     protected void setStatusBar() {
-        StatusBarUtil.setColor(this, getResources().getColor(R.color.test));
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
     /**
      * presenter与view绑定

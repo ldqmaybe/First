@@ -2,10 +2,16 @@ package com.example.administrator.myapplication;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.cn.baselib.base.BaseActivity;
 import com.cn.baselib.base.BasePresenter;
 import com.cn.baselib.rxbus.RxBus;
@@ -22,33 +28,21 @@ import com.example.administrator.myapplication.notification.Lesson_10Activity;
 import com.example.administrator.myapplication.retrofit.RetrofitActivity;
 import com.example.administrator.myapplication.rxjava.RxjavaActivity;
 import com.example.administrator.myapplication.utils.LogUtils;
+import com.example.administrator.myapplication.LoadMoreAddRefresh.ActivityItem;
+import com.example.administrator.myapplication.LoadMoreAddRefresh.XRecyclerViewActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 
 
 public class MainActivity extends BaseActivity {
-
-    @Bind(R.id.btn_click1)
-    Button btnClick1;
-    @Bind(R.id.btn_click2)
-    Button btnClick2;
-    @Bind(R.id.btn_click3)
-    Button btnClick3;
-    @Bind(R.id.btn_click4)
-    Button btnClick4;
-    @Bind(R.id.btn_click5)
-    Button btnClick5;
-    @Bind(R.id.btn_click6)
-    Button btnClick6;
-    @Bind(R.id.btn_click7)
-    Button btnClick7;
-    @Bind(R.id.btn_click8)
-    Button btnClick8;
-    @Bind(R.id.btn_click9)
-    Button btnClick9;
-    @Bind(R.id.btn_click10)
-    Button btnClick10;
+    @Bind(R.id.recyclerview)
+    RecyclerView recyclerview;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
+    private BaseQuickAdapter<ActivityItem, BaseViewHolder> mAdapter;
 
     @Override
     public BasePresenter initPresenter() {
@@ -62,6 +56,34 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        recyclerview.setLayoutManager(new LinearLayoutManager(this));
+
+        mAdapter = new BaseQuickAdapter<ActivityItem, BaseViewHolder>(R.layout.recyclerview_item_layout, getDatas()) {
+            @Override
+            protected void convert(BaseViewHolder helper, ActivityItem item) {
+                helper.setText(R.id.item_content, item.getTitle());
+            }
+        };
+        recyclerview.setAdapter(mAdapter);
+        setListener();
+    }
+
+    private void setListener() {
+        recyclerview.addOnItemTouchListener(new OnItemClickListener() {
+            @Override
+            public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
+                toItemActivity(position);
+            }
+
+        });
+    }
+
+    private void toItemActivity(int position) {
+        ActivityItem item = mAdapter.getData().get(position);
+        startActivity(new Intent(this, item.getCls()));
     }
 
     @Override
@@ -85,40 +107,32 @@ public class MainActivity extends BaseActivity {
         RxBus.getDefault().unRegister(this);
     }
 
-    @OnClick({R.id.btn_click1, R.id.btn_click2, R.id.btn_click3, R.id.btn_click4, R.id.btn_click5, R.id.btn_click6, R.id.btn_click7, R.id.btn_click8, R.id.btn_click9, R.id.btn_click10})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_click1:
-                startActivity(new Intent(this, TopActivity.class));
-                break;
-            case R.id.btn_click2:
-                startActivity(new Intent(this, CoordinatorLayoutActivity.class));
-                break;
-            case R.id.btn_click3:
-                startActivity(new Intent(this, TabLayoutActivity.class));
-                break;
-            case R.id.btn_click4:
-                startActivity(new Intent(this, NavigationDrawerActivity.class));
-                break;
-            case R.id.btn_click5:
-                startActivity(new Intent(this, CardViewActivity.class));
-                break;
-            case R.id.btn_click6:
-                startActivity(new Intent(this, XituActivity.class));
-                break;
-            case R.id.btn_click7:
-                startActivity(new Intent(this, Lesson_10Activity.class));
-                break;
-            case R.id.btn_click8:
-                startActivity(new Intent(this, RetrofitActivity.class));
-                break;
-            case R.id.btn_click9:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-            case R.id.btn_click10:
-                startActivity(new Intent(this, RxjavaActivity.class));
-                break;
-        }
+    private List<ActivityItem> getDatas() {
+        List<ActivityItem> mList = new ArrayList<>();
+        ActivityItem topActivity = new ActivityItem(TopActivity.class, "顶部栏");
+        mList.add(topActivity);
+        ActivityItem coordinatorLayoutActivity = new ActivityItem(CoordinatorLayoutActivity.class, "CoordinatorLayoutActivity");
+        mList.add(coordinatorLayoutActivity);
+        ActivityItem tabLayoutActivity = new ActivityItem(TabLayoutActivity.class, "TabLayoutActivity");
+        mList.add(tabLayoutActivity);
+        ActivityItem navigationDrawerActivity = new ActivityItem(NavigationDrawerActivity.class, "NavigationDrawerActivity");
+        mList.add(navigationDrawerActivity);
+        ActivityItem cardViewActivity = new ActivityItem(CardViewActivity.class, "CardViewActivity");
+        mList.add(cardViewActivity);
+        ActivityItem xituActivity = new ActivityItem(XituActivity.class, "仿稀土");
+        mList.add(xituActivity);
+        ActivityItem lesson_10Activity = new ActivityItem(Lesson_10Activity.class, "通知");
+        mList.add(lesson_10Activity);
+        ActivityItem retrofitActivity = new ActivityItem(RetrofitActivity.class, "RetrofitActivity");
+        mList.add(retrofitActivity);
+        ActivityItem loginActivity = new ActivityItem(LoginActivity.class, "MVP");
+        mList.add(loginActivity);
+        ActivityItem rxjavaActivity = new ActivityItem(RxjavaActivity.class, "RxjavaActivity");
+        mList.add(rxjavaActivity);
+        ActivityItem xRecyclerViewActivity = new ActivityItem(XRecyclerViewActivity.class, "XRecyclerViewActivity");
+        mList.add(xRecyclerViewActivity);
+
+        return mList;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -136,9 +150,19 @@ public class MainActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                LogUtils.i("tag",str);
-                Toast.makeText(MainActivity.this,str,Toast.LENGTH_SHORT).show();
+                LogUtils.i("tag", str);
+                Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         }, 2000);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

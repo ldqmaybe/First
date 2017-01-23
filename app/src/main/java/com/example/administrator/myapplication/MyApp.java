@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
-import cn.jpush.android.api.JPushInterface;
-
 /**
  * @author Admin
  * @time 2016/11/3 0003.15:00
@@ -30,8 +28,8 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        JPushInterface.setDebugMode(true);
-        JPushInterface.init(this);
+//        JPushInterface.setDebugMode(true);
+//        JPushInterface.init(this);
         context = getApplicationContext();
         mainThreadId = android.os.Process.myTid();
         handler = new Handler();

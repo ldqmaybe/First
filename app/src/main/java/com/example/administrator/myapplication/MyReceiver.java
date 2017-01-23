@@ -88,7 +88,7 @@ public class MyReceiver extends BroadcastReceiver {
 		return sb.toString();
 	}
 	
-	//send msg to MainActivity
+	//send msg to XRecyclerViewActivity
 	private void processCustomMessage(Context context, Bundle bundle) {
 //		String extra = bundle.getString(JPushInterface.EXTRA_EXTRA);
 //		String orderType = JsonUtils.getMsgByKey(extra,"order_type");

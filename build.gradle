@@ -16,7 +16,11 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-    }
+        maven { url "https://jitpack.io" }
+
+        maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }     }
 }
 
 task clean(type: Delete) {
@@ -25,7 +29,7 @@ task clean(type: Delete) {
 
 ext {
     /**********Sdk and tools**********/
-    minSdkVersion = 21
+    minSdkVersion = 18
     targetSdkVersion = 24
     compileSdkVersion = 24
     buildToolsVersion = "23.0.2"

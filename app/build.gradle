@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.antfortune.freeline'
-
+apply plugin: 'com.neenbedankt.android-apt'
 def releaseTime() {
     return new Date().format("yyyy_MM_dd", TimeZone.getTimeZone("UTC"))
 }
@@ -37,48 +37,45 @@ android {
             storePassword '123456'
         }
     }
+    //apk命名
+    android.applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                //这里修改apk文件名
+                //yc_pos_2.1.8_release_2016_09_17
+                def fileName = "yc_pos_${defaultConfig.versionName}_${variant.productFlavors[0].name}_${releaseTime()}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
+        }
+    }
     buildTypes {
         release {
             // 这里是在 applicationId 中添加了一个后缀。所以『.』要加上
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue "string", "app_name", "DemoRealse"
+        }
+    }
+    productFlavors {
+        dev_release {
+            // 这里是在 applicationId 中添加了一个后缀。所以『.』要加上
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", "First"
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField("String", "HOST_URL", "\"http://yuecaninfo.com\"")
-            //apk命名
-            android.applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
-                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                        //这里修改apk文件名
-                        //yc_pos_2.1.8_release_2016_09_17
-                        def fileName = "yc_pos_${defaultConfig.versionName}_${variant.buildType.name}_${releaseTime()}.apk"
-                        output.outputFile = new File(outputFile.parent, fileName)
-                    }
-                }
-            }
         }
-        dev105 {
-            minifyEnabled false
+        dev_105 {
             resValue "string", "app_name", "Demo105"
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField("String", "HOST_URL", "\"http://192.168.0.105\"")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        dev251 {
-            minifyEnabled false
+        dev_251 {
             resValue "string", "app_name", "Demo251"
             buildConfigField "boolean", "LOG_DEBUG", "false"
             buildConfigField("String", "HOST_URL", "\"http://192.168.0.251\"")
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug {
-            resValue "string", "app_name", "DemDebug"
-            buildConfigField "boolean", "LOG_DEBUG", "true"
-            buildConfigField("String", "HOST_URL", "\"http://192.168.0.251\"")
-        }
-    }
-    productFlavors {
     }
     //设置虚拟机堆内存空间大小，避免在编译期间OOM
     dexOptions {
@@ -89,6 +86,7 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+        warning 'InvalidPackage'
     }
 }
 
@@ -114,4 +112,16 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     //状态栏着色
 //    compile 'com.jaeger.statusbaruitl:library:1.3.1'
+
+    apt 'com.google.dagger:dagger-compiler:2.2'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.google.dagger:dagger:2.2'
+
+    //侧滑
+    compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.2.5'
+    //下拉刷新
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
+    //上拉加载更多、adapter
+//    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.0'
+    compile project(path: ':library')
 }

@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.cn.baselib.base.BaseActivity;
 import com.cn.baselib.base.BasePresenter;
-import com.cn.baselib.statusbar.StatusBarUtil;
 import com.example.administrator.myapplication.R;
 import com.example.administrator.myapplication.utils.LogUtils;
 
@@ -51,12 +50,6 @@ public class RxjavaActivity extends BaseActivity {
 //        testObservable();
 //        testImage();
 //        testmap();
-    }
-
-    @Override
-    protected void setStatusBar() {
-        super.setStatusBar();
-        StatusBarUtil.setTransparent(this);
     }
 
     private void testmap() {
