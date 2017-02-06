@@ -36,6 +36,7 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
     private int mCurrentCounter = 0;
     private int TOTAL_COUNTER = 18;
     private View notLoadingView;
+    private boolean mLoadMoreEndGone=false;
 
     @Override
     public BasePresenter initPresenter() {
@@ -62,24 +63,27 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-
+                mAdapter.setEnableLoadMore(false);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter.setDatas(getDatas());
-                        mAdapter.openLoadMore(PAGE_SIZE);
-                        mAdapter.removeAllFooterView();
+//                        mAdapter.openLoadMore(PAGE_SIZE);
+//                        mAdapter.removeAllFooterView();
                         mCurrentCounter = PAGE_SIZE;
                         mPtrFrame.refreshComplete();
+                        mAdapter.setEnableLoadMore(true);
                     }
                 }, 1000);
             }
         });
         mAdapter = new MyAdapter(this, R.layout.item, getDatas());
-
-        mAdapter.openLoadAnimation();
-        mAdapter.openLoadMore(PAGE_SIZE);
+        mAdapter.addHeaderView(getHeaderView(1,null));
+        mAdapter.addFooterView(getHeaderView(1,null));
         mAdapter.setOnLoadMoreListener(this);
+        mAdapter.openLoadAnimation();
+//        mAdapter.openLoadMore(PAGE_SIZE);
+
         recyclerview.setAdapter(mAdapter);
         mCurrentCounter = mAdapter.getData().size();
     }
@@ -101,17 +105,19 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
             @Override
             public void run() {
                 if (mCurrentCounter >= TOTAL_COUNTER) {
-                    mAdapter.loadComplete();
-                    if (notLoadingView == null) {
-                        notLoadingView = getLayoutInflater().inflate(R.layout.not_loading, (ViewGroup) recyclerview.getParent(), false);
-                    }
-                    mAdapter.addFooterView(notLoadingView);
+//                    mAdapter.loadComplete();
+//                    if (notLoadingView == null) {
+//                        notLoadingView = getLayoutInflater().inflate(R.layout.not_loading, (ViewGroup) recyclerview.getParent(), false);
+//                    }
+//                    mAdapter.addFooterView(notLoadingView);
+                    mAdapter.loadMoreEnd(mLoadMoreEndGone);//true is gone,false is visible
                 } else {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             mAdapter.addData(getDatas2());
                             mCurrentCounter = mAdapter.getData().size();
+                            mAdapter.loadMoreComplete();
                         }
                     }, 1000);
                 }
@@ -133,5 +139,11 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
             listData.add("new item  " + i);
         }
         return listData;
+    }
+
+    private View getHeaderView(int type, View.OnClickListener listener) {
+        View view = getLayoutInflater().inflate(R.layout.recyclerview_header, (ViewGroup) recyclerview.getParent(), false);
+        view.setOnClickListener(listener);
+        return view;
     }
 }

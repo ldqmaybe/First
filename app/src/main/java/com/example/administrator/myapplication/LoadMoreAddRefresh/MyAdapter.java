@@ -27,22 +27,26 @@ public class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder helper, final String item) {
+        final int pos = helper.getAdapterPosition()-1;
         helper.setText(R.id.text, item);
         helper.setOnClickListener(R.id.btnDelete, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                datas.remove(helper.getAdapterPosition());
-                notifyItemRemoved(helper.getAdapterPosition());
+                datas.remove(pos);
+//                notifyItemRemoved(pos);
+                notifyDataSetChanged();
             }
         });
         helper.setOnClickListener(R.id.content, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, item, Toast.LENGTH_SHORT).show();
-//                datas.remove(helper.getAdapterPosition());
-//                notifyItemRemoved(helper.getAdapterPosition());
+                datas.remove(pos);
+//                notifyItemRemoved(pos);
+                notifyDataSetChanged();
             }
         });
+
     }
 
     public void setDatas(List<String> data) {

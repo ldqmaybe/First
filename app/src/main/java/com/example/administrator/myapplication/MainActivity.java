@@ -17,6 +17,8 @@ import com.cn.baselib.base.BasePresenter;
 import com.cn.baselib.rxbus.RxBus;
 import com.cn.baselib.rxbus.Subscribe;
 import com.cn.baselib.rxbus.ThreadMode;
+import com.example.administrator.myapplication.LoadMoreAddRefresh.ActivityItem;
+import com.example.administrator.myapplication.LoadMoreAddRefresh.XRecyclerViewActivity;
 import com.example.administrator.myapplication.design.CardViewActivity;
 import com.example.administrator.myapplication.design.CoordinatorLayoutActivity;
 import com.example.administrator.myapplication.design.NavigationDrawerActivity;
@@ -28,8 +30,6 @@ import com.example.administrator.myapplication.notification.Lesson_10Activity;
 import com.example.administrator.myapplication.retrofit.RetrofitActivity;
 import com.example.administrator.myapplication.rxjava.RxjavaActivity;
 import com.example.administrator.myapplication.utils.LogUtils;
-import com.example.administrator.myapplication.LoadMoreAddRefresh.ActivityItem;
-import com.example.administrator.myapplication.LoadMoreAddRefresh.XRecyclerViewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,13 +72,18 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setListener() {
-        recyclerview.addOnItemTouchListener(new OnItemClickListener() {
+        recyclerview.addOnItemTouchListener(new OnItemClickListener() {//2.8.0
             @Override
-            public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 toItemActivity(position);
             }
-
         });
+//        recyclerview.addOnItemTouchListener(new OnItemClickListener() {
+//            @Override
+//            public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                toItemActivity(position);
+//            }
+//        });
     }
 
     private void toItemActivity(int position) {

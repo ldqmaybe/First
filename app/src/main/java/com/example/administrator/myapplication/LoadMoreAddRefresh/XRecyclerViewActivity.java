@@ -40,13 +40,19 @@ public class XRecyclerViewActivity extends AppCompatActivity {
             }
         };
         recyclerView.setAdapter(mAdapter);
-        recyclerView.addOnItemTouchListener(new OnItemClickListener() {
+        recyclerView.addOnItemTouchListener(new OnItemClickListener() {//2.8.0
             @Override
-            public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onSimpleItemClick(BaseQuickAdapter adapter, View view, int position) {
                 toItemActivity(position);
             }
-
         });
+//        recyclerView.addOnItemTouchListener(new OnItemClickListener() {
+//            @Override
+//            public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
+//                toItemActivity(position);
+//            }
+//
+//        });
     }
 
     private void toItemActivity(int position) {
