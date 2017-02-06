@@ -79,7 +79,6 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
         });
         mAdapter = new MyAdapter(this, R.layout.item, getDatas());
         mAdapter.addHeaderView(getHeaderView(1,null));
-        mAdapter.addFooterView(getHeaderView(1,null));
         mAdapter.setOnLoadMoreListener(this);
         mAdapter.openLoadAnimation();
 //        mAdapter.openLoadMore(PAGE_SIZE);
