@@ -76,7 +76,9 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
             }
         });
         mAdapter = new MyAdapter(this, R.layout.item, getDatas());
+
         mAdapter.openLoadAnimation();
+        mAdapter.openLoadMore(PAGE_SIZE);
         mAdapter.setOnLoadMoreListener(this);
         recyclerview.setAdapter(mAdapter);
         mCurrentCounter = mAdapter.getData().size();

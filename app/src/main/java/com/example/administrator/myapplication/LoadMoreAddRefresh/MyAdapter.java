@@ -28,8 +28,6 @@ public class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     @Override
     protected void convert(final BaseViewHolder helper, final String item) {
         helper.setText(R.id.text, item);
-        int pos = helper.getAdapterPosition();
-        Toast.makeText(context, item + "------position" + pos, Toast.LENGTH_SHORT).show();
         helper.setOnClickListener(R.id.btnDelete, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,8 +38,9 @@ public class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
         helper.setOnClickListener(R.id.content, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                datas.remove(helper.getAdapterPosition());
-                notifyItemRemoved(helper.getAdapterPosition());
+                Toast.makeText(context, item, Toast.LENGTH_SHORT).show();
+//                datas.remove(helper.getAdapterPosition());
+//                notifyItemRemoved(helper.getAdapterPosition());
             }
         });
     }
@@ -58,7 +57,6 @@ public class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
 
     public interface SwipeListener {
         void onDel(int position);
-
     }
 
     public void setOnDelListener(SwipeListener swipeListener) {
