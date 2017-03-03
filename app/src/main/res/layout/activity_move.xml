@@ -8,9 +8,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.administrator.myapplication.move.MoveActivity">
+    tools:context="com.example.administrator.first.move.MoveActivity">
 
-    <com.example.administrator.myapplication.move.MoveImageView
+    <com.example.administrator.first.move.MoveImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:src="@mipmap/ic_launcher" />

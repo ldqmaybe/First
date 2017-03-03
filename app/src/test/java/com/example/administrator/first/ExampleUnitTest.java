@@ -1,4 +1,4 @@
-package com.example.administrator.myapplication;
+package com.example.administrator.first;
 
 import org.junit.Before;
 import org.junit.Test;

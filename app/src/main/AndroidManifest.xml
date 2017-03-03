@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.administrator.myapplication">
+    package="com.first">
 
     <application
         android:name=".MyApp"
@@ -17,21 +17,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".design.CoordinatorLayoutActivity" />
-        <activity android:name=".design.TabLayoutActivity" />
+        <activity android:name="com.first.design.TabLayoutActivity" />
         <activity
-            android:name=".design.NavigationDrawerActivity"
+            android:name="com.first.design.NavigationDrawerActivity"
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme" />
-        <activity android:name=".design.CardViewActivity" />
-        <activity android:name=".design.XituActivity" />
-        <activity android:name=".move.MoveActivity" />
-        <activity android:name=".mvp.login.LoginActivity" />
-        <activity android:name=".LoadMoreAddRefresh.RecyclerViewActivity" />
-        <activity android:name=".LoadMoreAddRefresh.LinearActivity" />
-        <activity android:name=".LoadMoreAddRefresh.MultipleActivity" />
-        <activity android:name=".LoadMoreAddRefresh.FullDelDemoActivity" />
-        <activity android:name=".LoadMoreAddRefresh.RefreshActivity" />
-        <activity android:name=".dagger.Dagger2Activity" />
+        <activity android:name="com.first.design.CardViewActivity" />
+        <activity android:name="com.first.design.XituActivity" />
+        <activity android:name="com.first.mvp.login.LoginActivity" />
+        <activity android:name="com.first.LoadMoreAddRefresh.RecyclerViewActivity" />
+        <activity android:name="com.first.LoadMoreAddRefresh.LinearActivity" />
+        <activity android:name="com.first.LoadMoreAddRefresh.MultipleActivity" />
+        <activity android:name="com.first.LoadMoreAddRefresh.FullDelDemoActivity" />
+        <activity android:name="com.first.LoadMoreAddRefresh.RefreshActivity" />
+        <activity android:name="com.first.dagger.Dagger2Activity" />
         <!-- Required SDK 核心功能 -->
         <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
         <!-- 如：android:process=":remote" -->
@@ -56,7 +55,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
 
-                <category android:name="com.example.administrator.myapplication" />
+                <category android:name="com.first" />
                 <!-- <category android:name="您应用的包名"/> -->
             </intent-filter>
         </service>
@@ -68,7 +67,7 @@
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
 
-                <category android:name="com.example.administrator.myapplication" />
+                <category android:name="com.first" />
                 <!-- <category android:name="您应用的包名"/> -->
             </intent-filter>
             <intent-filter>
@@ -106,7 +105,7 @@
 
         <!-- User defined. 用户自定义的广播接收器 -->
         <receiver
-            android:name=".MyReceiver"
+            android:name="com.first.MyReceiver"
             android:enabled="true">
             <intent-filter>
 
