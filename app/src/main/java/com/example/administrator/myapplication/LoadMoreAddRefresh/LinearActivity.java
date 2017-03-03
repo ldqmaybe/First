@@ -32,11 +32,11 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
     RecyclerView recyclerview;
     @Bind(R.id.rotate_header_list_view_frame)
     PtrClassicFrameLayout mPtrFrame;
-        private MyAdapter mAdapter;
+    private MyAdapter mAdapter;
     private int mCurrentCounter = 0;
     private int TOTAL_COUNTER = 18;
     private View notLoadingView;
-    private boolean mLoadMoreEndGone=false;
+    private boolean mLoadMoreEndGone = false;
 
     @Override
     public BasePresenter initPresenter() {
@@ -51,7 +51,7 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
     @Override
     protected void initView() {
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerview.setLayoutManager(new LinearLayoutManager(this));
         mPtrFrame.setLastUpdateTimeRelateObject(this);
@@ -78,11 +78,10 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
             }
         });
         mAdapter = new MyAdapter(this, R.layout.item, getDatas());
-        mAdapter.addHeaderView(getHeaderView(1,null));
+        mAdapter.addHeaderView(getHeaderView(1, null));
         mAdapter.setOnLoadMoreListener(this);
         mAdapter.openLoadAnimation();
 //        mAdapter.openLoadMore(PAGE_SIZE);
-
         recyclerview.setAdapter(mAdapter);
         mCurrentCounter = mAdapter.getData().size();
     }
@@ -145,4 +144,5 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
         view.setOnClickListener(listener);
         return view;
     }
+
 }

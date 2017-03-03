@@ -17,19 +17,15 @@ import com.cn.baselib.base.BasePresenter;
 import com.cn.baselib.rxbus.RxBus;
 import com.cn.baselib.rxbus.Subscribe;
 import com.cn.baselib.rxbus.ThreadMode;
+import com.cn.baselib.utils.LogUtils;
 import com.example.administrator.myapplication.LoadMoreAddRefresh.ActivityItem;
-import com.example.administrator.myapplication.LoadMoreAddRefresh.XRecyclerViewActivity;
+import com.example.administrator.myapplication.LoadMoreAddRefresh.RecyclerViewActivity;
 import com.example.administrator.myapplication.design.CardViewActivity;
 import com.example.administrator.myapplication.design.CoordinatorLayoutActivity;
 import com.example.administrator.myapplication.design.NavigationDrawerActivity;
 import com.example.administrator.myapplication.design.TabLayoutActivity;
-import com.example.administrator.myapplication.design.TopActivity;
 import com.example.administrator.myapplication.design.XituActivity;
 import com.example.administrator.myapplication.mvp.login.LoginActivity;
-import com.example.administrator.myapplication.notification.Lesson_10Activity;
-import com.example.administrator.myapplication.retrofit.RetrofitActivity;
-import com.example.administrator.myapplication.rxjava.RxjavaActivity;
-import com.example.administrator.myapplication.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,12 +74,6 @@ public class MainActivity extends BaseActivity {
                 toItemActivity(position);
             }
         });
-//        recyclerview.addOnItemTouchListener(new OnItemClickListener() {
-//            @Override
-//            public void SimpleOnItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                toItemActivity(position);
-//            }
-//        });
     }
 
     private void toItemActivity(int position) {
@@ -114,8 +104,6 @@ public class MainActivity extends BaseActivity {
 
     private List<ActivityItem> getDatas() {
         List<ActivityItem> mList = new ArrayList<>();
-        ActivityItem topActivity = new ActivityItem(TopActivity.class, "顶部栏");
-        mList.add(topActivity);
         ActivityItem coordinatorLayoutActivity = new ActivityItem(CoordinatorLayoutActivity.class, "CoordinatorLayoutActivity");
         mList.add(coordinatorLayoutActivity);
         ActivityItem tabLayoutActivity = new ActivityItem(TabLayoutActivity.class, "TabLayoutActivity");
@@ -126,15 +114,9 @@ public class MainActivity extends BaseActivity {
         mList.add(cardViewActivity);
         ActivityItem xituActivity = new ActivityItem(XituActivity.class, "仿稀土");
         mList.add(xituActivity);
-        ActivityItem lesson_10Activity = new ActivityItem(Lesson_10Activity.class, "通知");
-        mList.add(lesson_10Activity);
-        ActivityItem retrofitActivity = new ActivityItem(RetrofitActivity.class, "RetrofitActivity");
-        mList.add(retrofitActivity);
         ActivityItem loginActivity = new ActivityItem(LoginActivity.class, "MVP");
         mList.add(loginActivity);
-        ActivityItem rxjavaActivity = new ActivityItem(RxjavaActivity.class, "RxjavaActivity");
-        mList.add(rxjavaActivity);
-        ActivityItem xRecyclerViewActivity = new ActivityItem(XRecyclerViewActivity.class, "XRecyclerViewActivity");
+        ActivityItem xRecyclerViewActivity = new ActivityItem(RecyclerViewActivity.class, "RecyclerViewActivity");
         mList.add(xRecyclerViewActivity);
 
         return mList;

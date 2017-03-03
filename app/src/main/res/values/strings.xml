@@ -11,4 +11,6 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_basic">BasicActivity</string>
     <string name="textview">其实我只是一个TextView</string>
+
+    <string name="empty_no_data">There is no data, Click Retry</string>
 </resources>

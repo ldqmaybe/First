@@ -2,6 +2,7 @@ package com.example.administrator.myapplication.design;
 
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.cn.baselib.base.BaseActivity;
 import com.cn.baselib.base.BasePresenter;
@@ -33,6 +34,16 @@ public class CoordinatorLayoutActivity extends BaseActivity {
         toolbar.setLogo(R.mipmap.ic_launcher);
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

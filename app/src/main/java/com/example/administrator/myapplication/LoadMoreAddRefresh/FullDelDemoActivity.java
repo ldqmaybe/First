@@ -1,18 +1,21 @@
 package com.example.administrator.myapplication.LoadMoreAddRefresh;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.cn.baselib.base.BaseActivity;
+import com.cn.baselib.base.BasePresenter;
 import com.example.administrator.myapplication.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
 import in.srain.cube.views.ptr.PtrClassicFrameLayout;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -25,29 +28,42 @@ import in.srain.cube.views.ptr.PtrHandler;
  * 时间： 2016/9/12.
  */
 
-public class FullDelDemoActivity extends Activity {
-    private RecyclerView mRv;
+public class FullDelDemoActivity extends BaseActivity {
+    @Bind(R.id.rv)
+    RecyclerView mRv;
+    @Bind(R.id.rotate_header_list_view_frame)
+    PtrClassicFrameLayout mPtrFrame;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
     private FullDelDemoAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
     private List<SwipeBean> mDatas;
-    private PtrClassicFrameLayout mPtrFrame;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fulldeldemo);
-        mRv = (RecyclerView) findViewById(R.id.rv);
+    public BasePresenter initPresenter() {
+        return null;
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.activity_fulldeldemo;
+    }
+
+    @Override
+    protected void initView() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mRv.setLayoutManager(mLayoutManager = new LinearLayoutManager(this));
 //        mRv.setLayoutManager(mLayoutManager = new GridLayoutManager(this, 2));
 //        mRv = (RecyclerView) findViewById(R.id.rv);
-
         initDatas();
         mAdapter = new FullDelDemoAdapter(this, mDatas);
+
         mAdapter.setOnDelListener(new FullDelDemoAdapter.onSwipeListener() {
             @Override
             public void onDel(int pos) {
                 if (pos >= 0 && pos < mDatas.size()) {
-                    Toast.makeText(FullDelDemoActivity.this, "onClick:" + mDatas.get(pos).name+"\nholder.getAdapterPosition()"+pos+"\nmDatas.size()"+mDatas.size(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FullDelDemoActivity.this, "onClick:" + mDatas.get(pos).name + "\nholder.getAdapterPosition()" + pos + "\nmDatas.size()" + mDatas.size(), Toast.LENGTH_SHORT).show();
                     mDatas.remove(pos);
                     mAdapter.notifyItemRemoved(pos);//推荐用这个
                     //如果删除时，不使用mAdapter.notifyItemRemoved(pos)，则删除没有动画效果，
@@ -84,8 +100,8 @@ public class FullDelDemoActivity extends Activity {
 
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                Toast.makeText(FullDelDemoActivity.this,"onRefresh",Toast.LENGTH_SHORT).show();
-               mDatas.clear();
+                Toast.makeText(FullDelDemoActivity.this, "onRefresh", Toast.LENGTH_SHORT).show();
+                mDatas.clear();
                 initDatas();
                 mAdapter.setDatas(mDatas);
                 mPtrFrame.refreshComplete();
@@ -107,7 +123,6 @@ public class FullDelDemoActivity extends Activity {
                 return false;
             }
         });
-
 
 
         // the following are default settings
@@ -133,4 +148,14 @@ public class FullDelDemoActivity extends Activity {
             mDatas.add(new SwipeBean("" + i));
         }
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

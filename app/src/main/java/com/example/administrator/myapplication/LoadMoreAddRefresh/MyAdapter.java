@@ -29,9 +29,11 @@ public class MyAdapter extends BaseQuickAdapter<String, BaseViewHolder> {
     protected void convert(final BaseViewHolder helper, final String item) {
         final int pos = helper.getAdapterPosition()-1;
         helper.setText(R.id.text, item);
+        final SwipeMenuLayout btn = helper.getView(R.id.swipeMenuLayout);
         helper.setOnClickListener(R.id.btnDelete, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                btn.quickClose();
                 datas.remove(pos);
 //                notifyItemRemoved(pos);
                 notifyDataSetChanged();

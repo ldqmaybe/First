@@ -14,6 +14,7 @@
     <color name="test">#ff9900</color>
 
     <color name="red_ff4a57">#ff4a57</color>
-
+    <color name="bg">#F0F0F0</color>
     <color name="cube_mints_f1f1f1">#f1f1f1</color>
+    <color name="txt_color">#48495F</color>
 </resources>

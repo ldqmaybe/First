@@ -75,9 +75,6 @@ public class TabLayoutActivity extends BaseActivity {
         list_title.add("今日热榜");
 
         //设置TabLayout的模式
-//        tab_FindFragment_title.setTabMode(TabLayout.LAYOUT_MODE_OPTICAL_BOUNDS);
-//        tab_FindFragment_title.setTabMode(TabLayout.LAYOUT_MODE_CLIP_BOUNDS);
-//        tab_FindFragment_title.setTabMode(TabLayout.FOCUSABLES_TOUCH_MODE);
         tab_FindFragment_title.setTabMode(TabLayout.MODE_SCROLLABLE);
 //        tab_FindFragment_title.setTabMode(TabLayout.MODE_FIXED);
         //为TabLayout添加tab名称

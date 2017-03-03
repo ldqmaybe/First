@@ -1,28 +1,36 @@
 package com.example.administrator.myapplication.LoadMoreAddRefresh;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.cn.baselib.base.BaseActivity;
 import com.cn.baselib.base.BasePresenter;
+import com.cn.baselib.utils.LogUtils;
+import com.cn.baselib.utils.NetworkUtils;
 import com.example.administrator.myapplication.R;
 
-import java.util.ArrayList;
-import java.util.List;
+import butterknife.Bind;
 
-import in.srain.cube.views.ptr.PtrClassicFrameLayout;
-import in.srain.cube.views.ptr.PtrDefaultHandler;
-import in.srain.cube.views.ptr.PtrFrameLayout;
-import in.srain.cube.views.ptr.PtrHandler;
+/**
+ * 还没用上
+ */
+public class RefreshActivity extends BaseActivity implements View.OnClickListener {
 
-public class RefreshActivity extends BaseActivity {
-    private RecyclerView mRv;
-    private List<SwipeBean> mDatas;
-    private FullDelDemoAdapter mAdapter;
-    private PtrClassicFrameLayout mPtrFrame;
-
+    @Bind(R.id.tv)
+    TextView tv;
+    @Bind(R.id.btn)
+    Button btn;
+    @Bind(R.id.btn2)
+    Button btn2;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
     @Override
     public BasePresenter initPresenter() {
         return null;
@@ -35,30 +43,68 @@ public class RefreshActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        mRv = (RecyclerView) findViewById(R.id.rv);
-        mRv.setLayoutManager(new LinearLayoutManager(this));
-        initDatas();
-        mAdapter = new FullDelDemoAdapter(this, mDatas);
-        mRv.setAdapter(mAdapter);
-
-        mPtrFrame = (PtrClassicFrameLayout) findViewById(R.id.rotate_header_list_view_frame);
-        mPtrFrame.setLastUpdateTimeRelateObject(this);
-        mPtrFrame.setPtrHandler(new PtrHandler() {
-            @Override
-            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
-                return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
-            }
-
-            @Override
-            public void onRefreshBegin(PtrFrameLayout frame) {
-                Toast.makeText(RefreshActivity.this,"onRefresh",Toast.LENGTH_SHORT).show();
-            }
-        });
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        btn.setOnClickListener(this);
+        btn2.setOnClickListener(this);
     }
-    private void initDatas() {
-        mDatas = new ArrayList<>();
-        for (int i = 0; i < 15; i++) {
-            mDatas.add(new SwipeBean("" + i));
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn:
+                tv.setText("wifi是否可用 true 为可用\n现在是：" + NetworkUtils.isWifiAvailable());
+                LogUtils.i("wifi是否可用 true 为可用\n现在是：" + NetworkUtils.isWifiAvailable()+"\ngetWifiEnabled:"+NetworkUtils.getWifiEnabled()+"\nisAvailableByPing:"+NetworkUtils.isAvailableByPing());
+                break;
+            case R.id.btn2:
+                WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
+                WifiInfo wifiInfo = wifiManager.getConnectionInfo();
+                String status =getStatus(wifiManager.getWifiState());
+                LogUtils.i("wifi状态：" + IsStartWifi(this));
+                tv.setText("wifi状态：" + IsStartWifi(this));
+//
+//                LogUtils.i("wifi状态：" + status + "\n连接的wifi名字：" + wifiInfo.getSSID() + "\n获取IP地址:" + wifiInfo.getIpAddress() + "\n获取网络ID:" + wifiInfo.getNetworkId()
+//                        + "\n获取RSSI，RSSI就是接受信号强度指示:" + wifiInfo.getRssi() + "\n获取连接速度，可以让用户获知这一信息:" + wifiInfo.getLinkSpeed());
+//
+//                tv.setText("连接的wifi名字：" + wifiInfo.getSSID() + "\n获取IP地址:" + wifiInfo.getIpAddress() + "\n获取网络ID:" + wifiInfo.getNetworkId()
+//                        + "\n获取RSSI，RSSI就是接受信号强度指示:" + wifiInfo.getRssi() + "\n获取连接速度，可以让用户获知这一信息:" + wifiInfo.getLinkSpeed());
+                break;
+            default:
+                break;
         }
     }
+    public static boolean IsStartWifi(Context context)  {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context .getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean isWifiDataEnable = false;
+        isWifiDataEnable = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        return isWifiDataEnable;
+    }
+    private String getStatus(int wifiState) {
+        String str = "";
+        switch (wifiState) {
+            case WifiManager.WIFI_STATE_DISABLED:
+                str = "WIFI_STATE_DISABLED";
+                break;
+            case WifiManager.WIFI_STATE_DISABLING:
+                str = "WIFI_STATE_DISABLING";
+                break;
+            case WifiManager.WIFI_STATE_ENABLED:
+                str = "WIFI_STATE_ENABLED";
+                break;
+            case WifiManager.WIFI_STATE_ENABLING:
+                str = "WIFI_STATE_ENABLING";
+                break;
+        }
+        return str;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

@@ -2,28 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.myapplication">
 
-    <!-- Required -->
-    <uses-permission android:name="com.example.administrator.myapplication.permission.JPUSH_MESSAGE" />
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <!-- Optional. Required for location feature -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -38,7 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".design.TopActivity" />
         <activity android:name=".design.CoordinatorLayoutActivity" />
         <activity android:name=".design.TabLayoutActivity" />
         <activity
@@ -47,8 +24,14 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".design.CardViewActivity" />
         <activity android:name=".design.XituActivity" />
-        <activity android:name=".retrofit.RetrofitActivity" />
-
+        <activity android:name=".move.MoveActivity" />
+        <activity android:name=".mvp.login.LoginActivity" />
+        <activity android:name=".LoadMoreAddRefresh.RecyclerViewActivity" />
+        <activity android:name=".LoadMoreAddRefresh.LinearActivity" />
+        <activity android:name=".LoadMoreAddRefresh.MultipleActivity" />
+        <activity android:name=".LoadMoreAddRefresh.FullDelDemoActivity" />
+        <activity android:name=".LoadMoreAddRefresh.RefreshActivity" />
+        <activity android:name=".dagger.Dagger2Activity" />
         <!-- Required SDK 核心功能 -->
         <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
         <!-- 如：android:process=":remote" -->
@@ -156,15 +139,6 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="72c8a8f392a8be993530ffa7" />
-
-        <activity android:name=".notification.Lesson_10Activity" />
-        <activity android:name=".move.MoveActivity" />
-        <activity android:name=".mvp.login.LoginActivity" />
-        <activity android:name=".rxjava.RxjavaActivity" />
-        <activity android:name=".LoadMoreAddRefresh.XRecyclerViewActivity" />
-        <activity android:name=".LoadMoreAddRefresh.LinearActivity" />
-        <activity android:name=".LoadMoreAddRefresh.FullDelDemoActivity" />
-        <activity android:name=".LoadMoreAddRefresh.RefreshActivity"></activity>
     </application>
 
 </manifest>
