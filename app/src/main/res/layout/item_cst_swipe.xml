@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.administrator.first.LoadMoreAddRefresh.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe"
     android:layout_width="match_parent"
@@ -45,4 +45,4 @@
             android:textColor="@android:color/white" />
 
 
-</com.example.administrator.first.LoadMoreAddRefresh.SwipeMenuLayout>
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

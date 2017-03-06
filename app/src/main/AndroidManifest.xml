@@ -5,7 +5,7 @@
     <application
         android:name=".MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -25,7 +25,7 @@
         <activity android:name="com.first.design.CardViewActivity" />
         <activity android:name="com.first.design.XituActivity" />
         <activity android:name="com.first.mvp.login.LoginActivity" />
-        <activity android:name="com.first.LoadMoreAddRefresh.RecyclerViewActivity" />
+        <activity android:name=".LoadMoreAddRefresh.RecyclerViewActivity" />
         <activity android:name="com.first.LoadMoreAddRefresh.LinearActivity" />
         <activity android:name="com.first.LoadMoreAddRefresh.MultipleActivity" />
         <activity android:name="com.first.LoadMoreAddRefresh.FullDelDemoActivity" />
