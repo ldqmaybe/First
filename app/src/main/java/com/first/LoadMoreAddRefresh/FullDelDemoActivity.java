@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 
@@ -39,11 +38,6 @@ public class FullDelDemoActivity extends BaseActivity {
     private FullDelDemoAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
     private List<SwipeBean> mDatas;
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

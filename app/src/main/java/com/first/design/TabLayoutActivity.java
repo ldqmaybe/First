@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 
 import java.util.ArrayList;
@@ -23,11 +22,6 @@ public class TabLayoutActivity extends BaseActivity {
 
     private List<Fragment> list_fragment;                                //定义要装fragment的列表
     private List<String> list_title;                                     //tab名称列表
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

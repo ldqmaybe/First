@@ -6,7 +6,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.cn.baselib.statusbar.StatusBarUtil;
 import com.first.R;
 
@@ -20,10 +19,6 @@ public class NavigationDrawerActivity extends BaseActivity  {
 //    NavigationView navigationView;
     @Bind(R.id.drawer_layout)
     DrawerLayout drawer;
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

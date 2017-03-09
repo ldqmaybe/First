@@ -5,7 +5,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 
 import butterknife.Bind;
@@ -17,10 +16,6 @@ public class CoordinatorLayoutActivity extends BaseActivity {
     @Bind(R.id.activity_coordinator_layout)
     CoordinatorLayout activityCoordinatorLayout;
 
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

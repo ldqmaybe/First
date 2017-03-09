@@ -39,7 +39,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     ImageView header;
 
     @Override
-    public LoginPresenter initPresenter() {
+    protected LoginPresenter initPresenter() {
         return new LoginPresenter();
     }
 
@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     @Override
     protected void setStatusBar() {
         super.setStatusBar();
-        StatusBarUtil.setColor(this,getResources().getColor(R.color.test));
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.test));
     }
 
     @Override

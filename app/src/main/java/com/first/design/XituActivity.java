@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 
 import butterknife.Bind;
@@ -40,11 +39,6 @@ public class XituActivity extends BaseActivity {
     NestedScrollView nsv;
     @Bind(R.id.root_layout)
     CoordinatorLayout rootLayout;
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

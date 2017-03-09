@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.cn.baselib.utils.LogUtils;
 import com.cn.baselib.utils.NetworkUtils;
 import com.first.R;
@@ -32,10 +31,6 @@ public class RefreshActivity extends BaseActivity implements View.OnClickListene
     Button btn2;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

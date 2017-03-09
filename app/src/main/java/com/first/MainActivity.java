@@ -13,7 +13,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.cn.baselib.rxbus.RxBus;
 import com.cn.baselib.rxbus.Subscribe;
 import com.cn.baselib.rxbus.ThreadMode;
@@ -39,11 +38,6 @@ public class MainActivity extends BaseActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     private BaseQuickAdapter<ActivityItem, BaseViewHolder> mAdapter;
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

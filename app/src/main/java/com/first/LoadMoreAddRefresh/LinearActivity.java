@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 
 import java.util.ArrayList;
@@ -37,11 +36,6 @@ public class LinearActivity extends BaseActivity implements BaseQuickAdapter.Req
     private int TOTAL_COUNTER = 18;
     private View notLoadingView;
     private boolean mLoadMoreEndGone = false;
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

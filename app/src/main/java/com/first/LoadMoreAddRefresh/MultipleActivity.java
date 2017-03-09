@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 
 import java.util.ArrayList;
@@ -29,11 +28,6 @@ public class MultipleActivity extends BaseActivity{
     @Bind(R.id.rotate_header_list_view_frame)
     PtrClassicFrameLayout mPtrFrame;
     private MultipleAdapter mAdapter ;
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

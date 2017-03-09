@@ -11,7 +11,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 
 import java.util.ArrayList;
@@ -25,11 +24,6 @@ public class RecyclerViewActivity extends BaseActivity {
     @Bind(R.id.id_item_remove_recyclerview)
     RecyclerView recyclerView;
     private BaseQuickAdapter<ActivityItem, BaseViewHolder> mAdapter;
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {
@@ -75,6 +69,8 @@ public class RecyclerViewActivity extends BaseActivity {
         mList.add(fullDelDemoActivity);
         ActivityItem loadMoreActivity = new ActivityItem(RefreshActivity.class, "RefreshActivity");
         mList.add(loadMoreActivity);
+        ActivityItem horizonRecycleviewActivity = new ActivityItem(HorizonRecycleviewActivity.class, "HorizonRecycleviewActivity");
+        mList.add(horizonRecycleviewActivity);
 
         return mList;
     }

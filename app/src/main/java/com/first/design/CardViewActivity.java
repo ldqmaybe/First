@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.cn.baselib.base.BaseActivity;
-import com.cn.baselib.base.BasePresenter;
 import com.first.R;
 import com.first.bean.CardInfo;
 
@@ -29,11 +28,6 @@ public class CardViewActivity extends BaseActivity {
     private PullMoreRecyclerAdapter adapter;
     private LinearLayoutManager mLayoutManager;
     List<CardInfo> list = new ArrayList<CardInfo>();
-
-    @Override
-    public BasePresenter initPresenter() {
-        return null;
-    }
 
     @Override
     protected int setLayoutId() {

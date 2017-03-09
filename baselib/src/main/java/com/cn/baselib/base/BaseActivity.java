@@ -23,7 +23,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     /**
      * 简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
      */
-    public abstract T initPresenter();
+    protected T initPresenter() {
+        return mPresenter;
+    }
+//    public abstract T initPresenter();
 
     /**
      * 绑定布局
