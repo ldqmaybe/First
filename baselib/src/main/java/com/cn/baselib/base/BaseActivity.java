@@ -1,6 +1,7 @@
 package com.cn.baselib.base;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,16 +10,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.cn.baselib.R;
-import com.cn.baselib.mvp.IView;
 import com.cn.baselib.statusbar.StatusBarUtil;
 import com.cn.baselib.utils.HideUtil;
 
 import butterknife.ButterKnife;
 
 
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements IView {
+public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity {
     public T mPresenter;
     public Context mContext;
+    private ProgressDialog dialog;
 
     /**
      * 简单页面无需mvp就不用管此方法即可,完美兼容各种实际场景的变通
@@ -93,5 +94,18 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
             mPresenter.detachView();
         ButterKnife.unbind(this);
         BaseApplication.getIns().finishActivity(this);
+    }
+
+    public void showDialog() {
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("加载中...");
+        dialog.show();
+    }
+
+    public void dismissDialog() {
+        if (dialog != null && dialog.isShowing()) {
+            // progressDialog.hide();会导致android.view.WindowLeaked
+            dialog.dismiss();
+        }
     }
 }
