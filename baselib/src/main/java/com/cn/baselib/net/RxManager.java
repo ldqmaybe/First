@@ -18,6 +18,25 @@ import rx.subscriptions.CompositeSubscription;
 public class RxManager {
     private CompositeSubscription mSubscription;
 
+    /**
+     *没有base bean的情况下使用
+     * @param observable 事件源
+     * @param subscriber 观察者
+     */
+    public void addSub(Observable observable, Subscriber subscriber) {
+        if (mSubscription == null) {
+            mSubscription = new CompositeSubscription();
+        }
+        mSubscription.add(observable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber));
+    }
+    /**
+     *有base bean的情况下使用
+     * @param observable 事件源
+     * @param subscriber 观察者
+     */
     public <T> void addSubscription(Observable<BaseHttpResult<T>> observable, Subscriber<T> subscriber) {
         if (null == mSubscription) {
             mSubscription = new CompositeSubscription();
@@ -29,15 +48,13 @@ public class RxManager {
                 .subscribe(subscriber));
     }
 
-    private void unSubscribe() {
+    /**
+     * 取消注册
+     */
+    public void unSubscribe() {
         if (null != mSubscription && !mSubscription.isUnsubscribed()) {
             mSubscription.unsubscribe();
         }
-    }
-
-    public void clear() {
-        //加上这句，避免出现内存泄露
-        unSubscribe();
     }
 
     /**

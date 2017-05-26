@@ -22,6 +22,6 @@ public abstract class BasePresenter<V >  {
         if (mView != null) {
             mView = null;
         }
-        mRxManage.clear();
+        mRxManage.unSubscribe();
     }
 }
