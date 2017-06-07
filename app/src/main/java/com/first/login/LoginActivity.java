@@ -1,4 +1,4 @@
-package com.first.mvp.login;
+package com.first.login;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -8,13 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cn.baselib.base.BaseActivity;
 import com.cn.baselib.statusbar.StatusBarUtil;
 import com.cn.baselib.widget.CaptchaImageView;
 import com.first.R;
+import com.first.base.BaseActivity;
 import com.first.bean.TimeStampResp;
 import com.first.dialog.DialogFactory;
 import com.first.dialog.ModifyPassWordDialog;
+import com.first.login.LoginContract;
+import com.first.login.LoginPresenter;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -37,7 +39,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     Button mBtRefresh;
     @Bind(R.id.header)
     ImageView header;
-
     @Override
     protected LoginPresenter initPresenter() {
         return new LoginPresenter();

@@ -24,7 +24,7 @@ import com.first.design.CoordinatorLayoutActivity;
 import com.first.design.NavigationDrawerActivity;
 import com.first.design.TabLayoutActivity;
 import com.first.design.XituActivity;
-import com.first.mvp.login.LoginActivity;
+import com.first.login.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;

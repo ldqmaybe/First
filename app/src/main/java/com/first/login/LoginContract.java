@@ -1,4 +1,4 @@
-package com.first.mvp.login;
+package com.first.login;
 
 import com.first.bean.TimeStampResp;
 
@@ -15,7 +15,7 @@ public class LoginContract {
     }
     interface Presenter{
         void getDate();
-        void login(String name, String pwd);
+       void login(String name, String pwd);
     }
 }
 
