@@ -7,6 +7,10 @@ public class CardInfo {
     private String title;
     private String content;
 
+
+
+
+
     public String getTitle() {
         return title;
     }
