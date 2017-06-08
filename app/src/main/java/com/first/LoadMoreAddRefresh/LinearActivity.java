@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.first.R;
 
 import java.util.ArrayList;

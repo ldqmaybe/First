@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.first.R;
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
 

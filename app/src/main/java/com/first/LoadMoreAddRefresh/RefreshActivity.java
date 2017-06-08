@@ -9,8 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.cn.baselib.utils.LogUtils;
 import com.cn.baselib.utils.NetworkUtils;
 import com.first.R;

@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.first.R;
 
 import java.util.ArrayList;
