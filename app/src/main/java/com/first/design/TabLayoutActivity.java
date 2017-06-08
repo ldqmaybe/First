@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.first.R;
 
 import java.util.ArrayList;

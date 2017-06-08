@@ -7,8 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.cn.baselib.base.BaseActivity;
 import com.first.R;
+import com.first.base.BaseActivity;
 import com.first.bean.CardInfo;
 
 import java.util.ArrayList;

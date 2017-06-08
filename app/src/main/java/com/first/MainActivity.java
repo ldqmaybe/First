@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.cn.baselib.rxbus.RxBus;
 import com.cn.baselib.rxbus.Subscribe;
 import com.cn.baselib.rxbus.ThreadMode;

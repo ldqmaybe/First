@@ -1,7 +1,7 @@
 package com.first.login;
 
 
-import com.cn.baselib.base.BaseHttpResult;
+import com.first.base.BaseHttpResult;
 import com.first.bean.TimeStampResp;
 
 import retrofit2.http.GET;

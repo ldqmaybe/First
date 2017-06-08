@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.cn.baselib.base.BaseActivity;
+import com.first.base.BaseActivity;
 import com.first.R;
 
 import butterknife.Bind;

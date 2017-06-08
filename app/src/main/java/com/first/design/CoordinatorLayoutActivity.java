@@ -4,8 +4,8 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.cn.baselib.base.BaseActivity;
 import com.first.R;
+import com.first.base.BaseActivity;
 
 import butterknife.Bind;
 

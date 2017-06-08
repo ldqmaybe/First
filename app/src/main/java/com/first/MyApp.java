@@ -1,6 +1,7 @@
 package com.first;
 
-import com.cn.baselib.base.BaseApplication;
+
+import com.first.base.BaseApplication;
 
 /**
  * @author Admin
