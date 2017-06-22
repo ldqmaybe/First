@@ -9,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.first.R;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 

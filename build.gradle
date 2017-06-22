@@ -34,7 +34,7 @@ ext {
     compileSdkVersion = 24
     buildToolsVersion = "25.0.3"
     /*********App dependencies*******/
-    supportLibraryVersion = '24.2.1'
+    supportLibraryVersion = '25.3.1'
     junitVersion = '4.12'
     mockitoVersion = '1.10.19'
     powerMockito = '1.6.2'

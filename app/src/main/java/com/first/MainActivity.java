@@ -24,6 +24,7 @@ import com.first.design.CoordinatorLayoutActivity;
 import com.first.design.NavigationDrawerActivity;
 import com.first.design.TabLayoutActivity;
 import com.first.design.XituActivity;
+import com.first.keybord.XianYuActivity;
 import com.first.login.LoginActivity;
 
 import java.util.ArrayList;
@@ -112,6 +113,8 @@ public class MainActivity extends BaseActivity {
         mList.add(loginActivity);
         ActivityItem xRecyclerViewActivity = new ActivityItem(RecyclerViewActivity.class, "RecyclerViewActivity");
         mList.add(xRecyclerViewActivity);
+        ActivityItem xianYu = new ActivityItem(XianYuActivity.class, "RecyclerViewActivity");
+        mList.add(xianYu);
 
         return mList;
     }

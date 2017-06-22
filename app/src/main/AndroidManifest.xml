@@ -24,13 +24,14 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".design.CardViewActivity" />
         <activity android:name=".design.XituActivity" />
-        <activity android:name=".mvp.login.LoginActivity" />
+        <activity android:name=".login.LoginActivity" />
         <activity android:name=".LoadMoreAddRefresh.RecyclerViewActivity" />
         <activity android:name=".LoadMoreAddRefresh.LinearActivity" />
         <activity android:name=".LoadMoreAddRefresh.MultipleActivity" />
         <activity android:name=".LoadMoreAddRefresh.FullDelDemoActivity" />
         <activity android:name=".LoadMoreAddRefresh.RefreshActivity" />
-        <activity android:name=".dagger.Dagger2Activity" />
+        <activity android:name=".LoadMoreAddRefresh.HorizonRecycleviewActivity"/>
+        <activity android:name=".keybord.XianYuActivity"/>
         <!-- Required SDK 核心功能 -->
         <!-- option since 2.0.5 可配置PushService，DaemonService,PushReceiver,AlarmReceiver的android:process参数 将JPush相关组件设置为一个独立进程 -->
         <!-- 如：android:process=":remote" -->
@@ -138,8 +139,6 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="72c8a8f392a8be993530ffa7" />
-
-        <activity android:name=".LoadMoreAddRefresh.HorizonRecycleviewActivity"></activity>
     </application>
 
 </manifest>
